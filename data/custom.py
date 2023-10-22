@@ -18,11 +18,23 @@ else:
 
 path_to_dir = osp.dirname(osp.abspath(__file__))
 CUSTOM_ROOT = path_to_dir + "/custom"
+allnames = []
+for ii in range(1, 100 + 1):
+  #print(ii)
+  ffname = '/content/v831_yolo/data/custom/Annotations/' + str(ii)  +'.xml'
 
-CUSTOM_CLASSES = [
-    "mouse",
-    "sipeed_logo"
-]
+  tree = ET.parse(ffname)
+  root = tree.getroot()
+  # parsing using the string.
+  #stringroot = ET.fromstring(XMLexample_stored_in_a_string)
+  # printing the root.
+  #print(root)
+
+  for filename in root.iter('name'):
+    #print(filename.text)
+    allnames.append(filename.text)
+
+CUSTOM_CLASSES = np.unique(allnames)
 
 
 class CustomAnnotationTransform(object):
