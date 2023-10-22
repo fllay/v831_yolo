@@ -23,7 +23,7 @@ else:
 
 class CustomAPIEvaluator():
     """ VOC AP Evaluation class """
-    def __init__(self, data_root, img_size, device, transform, labelmap, set_type='val', display=False, use_horovod=False):
+    def __init__(self, data_root, img_size, device, transform, labelmap, set_type='valid', display=False, use_horovod=False):
         self.data_root = data_root
         self.img_size = img_size
         self.device = device
