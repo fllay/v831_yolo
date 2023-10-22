@@ -6,6 +6,7 @@ https://github.com/fmassa/vision/blob/voc_dataset/torchvision/datasets/voc.py
 Updated by: Ellis Brown, Max deGroot
 """
 import os.path as osp
+import os
 import sys
 import torch
 import torch.utils.data as data
@@ -18,10 +19,25 @@ else:
 
 path_to_dir = osp.dirname(osp.abspath(__file__))
 CUSTOM_ROOT = path_to_dir + "/custom"
+
+res = []
+an_path = '/content/v831_yolo/data/custom/Annotations' 
+# Iterate directory
+for file_path in os.listdir(an_path):
+    # check if current file_path is a file
+    if os.path.isfile(os.path.join(an_path, file_path)):
+        # add filename to list
+        res.append(file_path)
+print(res)
+fnames = []
+for x in res:
+  fnames.append(os.path.splitext(x)[0])
+
 allnames = []
-for ii in range(1, 100 + 1):
+#for ii in range(1, 100 + 1):
+for ff in fnames:
   #print(ii)
-  ffname = '/content/v831_yolo/data/custom/Annotations/' + str(ii)  +'.xml'
+  ffname = '/content/v831_yolo/data/custom/Annotations/' + ff  +'.xml'
 
   tree = ET.parse(ffname)
   root = tree.getroot()
