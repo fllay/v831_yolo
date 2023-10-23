@@ -1,8 +1,8 @@
 # config.py
 
 train_cfg = {
-    'lr_epoch': (75, 150),
-    'max_epoch': 150
+    'lr_epoch': (150, 200),
+    'max_epoch': 260
 }
 
 # single level anchor box config for VOC and COCO
